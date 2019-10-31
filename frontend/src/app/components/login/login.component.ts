@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   form = {
     email: null,
     password: null
-  }
+  };
   error = null;
   onSubmit() {
     return this.auth.login(this.form)
