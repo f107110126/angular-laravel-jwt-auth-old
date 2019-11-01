@@ -12,13 +12,16 @@ export class RequestResetComponent implements OnInit {
     email: null,
   };
   onSubmit() {
+    this.notify.info('Wait...', {
+      timeout: 5000
+    })
     this.auth.sendPasswordResetLink(this.form).subscribe(
-      data =>this.handleResponse(data),
+      data => this.handleResponse(data),
       error => this.notify.error(error.error.error)
     );
   }
   handleResponse(res) {
-    console.log(res);
+    this.notify.success(res.data, { timeout: 0 })
     this.form.email = null;
 
   }
